@@ -5,14 +5,16 @@ public class Employee {
     private String firstName;
     private String name;
     private Position position;
+    private Branch branch;
 
     public Employee() {
     }
 
-    public Employee(String firstName, String name, Position position) {
+    public Employee(String firstName, String name, Position position, Branch branch) {
         this.firstName = firstName;
         this.name = name;
         this.position = position;
+        this.branch = branch;
     }
 
     public Integer getEmployeeId() {
@@ -47,6 +49,14 @@ public class Employee {
         this.position = position;
     }
 
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -54,6 +64,7 @@ public class Employee {
                 ", firstName='" + firstName + '\'' +
                 ", name='" + name + '\'' +
                 ", position=" + position +
+                ", branch=" + branch +
                 '}';
     }
 }

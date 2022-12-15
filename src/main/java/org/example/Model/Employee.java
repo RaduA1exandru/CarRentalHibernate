@@ -1,10 +1,23 @@
 package org.example.Model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "employee")
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "employee_id")
     private Integer employeeId;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "name")
     private String name;
+    @Column(name = "position")
+    @Enumerated(value = EnumType.STRING)
     private Position position;
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
     private Branch branch;
 
     public Employee() {

@@ -7,7 +7,12 @@ public class RentalCompany {
     public String owner;
     public Branch branch;
 
-    public RentalCompany(String name, String internetDomain, String address, String owner, Branch branches) {
+    public RentalCompany(String name,
+                         String internetDomain,
+                         String address,
+                         String owner,
+                         Branch branches
+    ) {
         this.name = name;
         this.internetDomain = internetDomain;
         this.address = address;

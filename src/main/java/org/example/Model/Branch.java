@@ -1,17 +1,32 @@
 package org.example.Model;
 
+import javax.persistence.*;
+import java.util.List;
+@Entity
+@Table(name = "branch")
 public class Branch {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "branch_id")
     public Integer branchId;
+    @Column(name = "address")
     public String address;
+    @Column(name = "city")
     public String city;
-    public Employee employee;
-    public Car cars;
+    @OneToMany(mappedBy = "branch")
+    public List<Employee> employees;
+    @OneToMany(mappedBy = "branch")
+    public List<Car> cars;
 
 
-    public Branch(Integer branchId, String address, String city, Employee employee, Car cars) {
+    public Branch(Integer branchId,
+                  String address,
+                  String city,
+                  List<Employee> employees,
+                  List<Car> cars) {
         this.address = address;
         this.city = city;
-        this.employee = employee;
+        this.employees = employees;
         this.cars = cars;
         this.branchId = branchId;
     }
@@ -32,19 +47,19 @@ public class Branch {
         this.city = city;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
-    public Car getCars() {
+    public List<Car> getCars() {
         return cars;
     }
 
-    public void setCars(Car cars) {
+    public void setCars(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -62,7 +77,7 @@ public class Branch {
                 "branchId=" + branchId +
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
-                ", employee=" + employee +
+                ", employee=" + employees +
                 ", cars=" + cars +
                 '}';
     }

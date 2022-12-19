@@ -20,19 +20,18 @@ public class Customer {
     @Column(name = "address")
     private String address;
 
-    @OneToMany
-    @JoinColumn(name = "reservation_id")
-    private List<Reservation> reservations;
+//    @OneToMany
+//    @JoinColumn(name = "reservation_id")
+//    private List<Reservation> reservations;
 
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String email, String address, List<Reservation> reservation) {
+    public Customer(String firstName, String lastName, String email, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.address = address;
-        this.reservations = reservations;
     }
 
     public Integer getCustomerId() {
@@ -75,14 +74,6 @@ public class Customer {
         this.address = address;
     }
 
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
     @Override
     public String toString() {
         return "Customer{" +
@@ -91,7 +82,6 @@ public class Customer {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
-                ", reservations=" + reservations +
                 '}';
     }
 }

@@ -13,21 +13,20 @@ public class Branch {
     public String address;
     @Column(name = "city")
     public String city;
-    @OneToMany(mappedBy = "branch")
-    public List<Employee> employees;
-    @OneToMany(mappedBy = "branch")
-    public List<Car> cars;
 
+    public Branch() {
+    }
 
-    public Branch(Integer branchId,
-                  String address,
-                  String city,
-                  List<Employee> employees,
-                  List<Car> cars) {
+    public Branch(String address, String city) {
         this.address = address;
         this.city = city;
-        this.employees = employees;
-        this.cars = cars;
+    }
+
+    public Integer getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(Integer branchId) {
         this.branchId = branchId;
     }
 
@@ -47,38 +46,16 @@ public class Branch {
         this.city = city;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
-    }
-
-    public Integer getBranchId() {
-        return branchId;
-    }
-
-    public void setBranchId(Integer branchId) {
-        this.branchId = branchId;
-    }
-
     @Override
     public String toString() {
         return "Branch{" +
                 "branchId=" + branchId +
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
-                ", employee=" + employees +
-                ", cars=" + cars +
                 '}';
     }
+//    @OneToMany(mappedBy = "branch")
+//    public List<Employee> employees;
+//    @OneToMany(mappedBy = "branch")
+//    public List<Car> cars;
 }

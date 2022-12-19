@@ -2,11 +2,10 @@ package org.example.Model;
 
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
-@Table(name = "car")
-public class Car {
+@Table(name = "Cars")
+public class Cars {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "car_id")
@@ -20,42 +19,27 @@ public class Car {
     @Column(name = "year")
     private Integer year;
     @Column(name = "colour")
-    @Enumerated(value = EnumType.STRING)
-    private Colour colour;
+    private String colour;
     @Column(name = "mileage")
     private Integer mileage;
-    @Column(name = "status")
-    @Enumerated(value = EnumType.STRING)
-    private Status status;
+    //    @Column(name = "status")
+//    @Enumerated(value = EnumType.STRING)
+//    private Status status;
     @Column(name = "amount")
     private Integer amount;
-    @ManyToOne
-    @JoinColumn(name = "branch_id")
-    private Branch branch;
 
-    public Car() {}
+    public Cars() {
+    }
 
-    public Car(String brand,
-               String model,
-               String bodyType,
-               Integer year,
-               Colour colour,
-               Integer mileage,
-               Status status,
-               Integer amount,
-               Branch branch) {
+    public Cars(String brand, String model, String bodyType, Integer year, String colour, Integer mileage, Integer amount) {
         this.brand = brand;
         this.model = model;
         this.bodyType = bodyType;
         this.year = year;
         this.colour = colour;
         this.mileage = mileage;
-        this.status = status;
         this.amount = amount;
-        this.branch = branch;
     }
-
-
 
     public Integer getCarId() {
         return carId;
@@ -97,11 +81,11 @@ public class Car {
         this.year = year;
     }
 
-    public Colour getColour() {
+    public String getColour() {
         return colour;
     }
 
-    public void setColour(Colour colour) {
+    public void setColour(String colour) {
         this.colour = colour;
     }
 
@@ -113,28 +97,8 @@ public class Car {
         this.mileage = mileage;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
     public Integer getAmount() {
         return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
-
-    public Branch getBranch() {
-        return branch;
-    }
-
-    public void setBranch(Branch branch) {
-        this.branch = branch;
     }
 
     @Override
@@ -147,9 +111,14 @@ public class Car {
                 ", year=" + year +
                 ", colour='" + colour + '\'' +
                 ", mileage=" + mileage +
-                ", status=" + status +
                 ", amount=" + amount +
-                ", branch=" + branch +
                 '}';
     }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+//    @ManyToOne
+//    @JoinColumn(name = "branch_id")
+//    private Branch branch;
 }

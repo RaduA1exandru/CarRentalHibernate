@@ -20,7 +20,7 @@ public abstract class AbstractSessionManager {
 
     private static final String DATABASE_SHOW_SQL = "true";
 
-    private static final String DATABASE_HBM2DDL_AUTO = "create-drop";
+    private static final String DATABASE_HBM2DDL_AUTO = "create";
 
     private SessionFactory sessionFactory;
 
@@ -42,7 +42,7 @@ public abstract class AbstractSessionManager {
                 settings.put(Environment.PASS, DATABASE_PASSWORD);
 
                 settings.put(Environment.DIALECT, DATABASE_DIALECT);
-
+                settings.put(Environment.AUTOCOMMIT, true);
                 settings.put(Environment.SHOW_SQL, DATABASE_SHOW_SQL);
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, DATABASE_CURRENT_SESSION_CONTEXT_CLASS);
                 settings.put(Environment.HBM2DDL_AUTO, DATABASE_HBM2DDL_AUTO);

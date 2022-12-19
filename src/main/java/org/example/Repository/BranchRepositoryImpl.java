@@ -1,6 +1,6 @@
 package org.example.Repository;
 
-import org.example.Model.Cars;
+import org.example.Model.Branch;
 import org.example.Util.SessionManager;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CarRepositoryImpl implements CarRepository {
+public class BranchRepositoryImpl implements BranchRepository {
 
     @Override
-    public Optional<Cars> findById(int id) {
+    public Optional<Branch> findById(int id) {
         try (Session session = SessionManager.getSessionFactory().openSession()) {
-            return Optional.ofNullable(session.find(Cars.class, id));
+            return Optional.ofNullable(session.find(Branch.class, id));
         } catch (Exception e) {
             e.printStackTrace();
             return Optional.empty();
@@ -22,13 +22,13 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
-    public Optional<Cars> findByIdAndLoadCars(int id) {
+    public Optional<Branch> findByIdAndLoadBranches(int id) {
         try (Session session = SessionManager.getSessionFactory().openSession()) {
-            Optional<Cars> car = Optional.ofNullable(session.find(Cars.class, id));
-            if (car.isPresent()) {
-                System.out.println(car.get().getCarId());
+            Optional<Branch> branch = Optional.ofNullable(session.find(Branch.class, id));
+            if (branch.isPresent()) {
+                System.out.println(branch.get().getBranchId());
             }
-            return car;
+            return branch;
         } catch (Exception e) {
             e.printStackTrace();
             return Optional.empty();
@@ -36,12 +36,12 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
-    public void create(Cars car) {
+    public void create(Branch branch) {
         Transaction transaction = null;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            session.save(car);
+            session.save(branch);
 
             transaction.commit();
         } catch (Exception e) {
@@ -53,12 +53,12 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
-    public void update(Cars car) {
+    public void update(Branch branch) {
         Transaction transaction = null;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            session.update(car);
+            session.update(branch);
 
             transaction.commit();
         } catch (Exception e) {
@@ -70,12 +70,12 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
-    public void delete(Cars car) {
+    public void delete(Branch branch) {
         Transaction transaction = null;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            session.delete(car);
+            session.delete(branch);
 
             transaction.commit();
         } catch (Exception e) {
@@ -87,9 +87,9 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
-    public List<Cars> findAll() {
+    public List<Branch> findAll() {
         try (Session session = SessionManager.getSessionFactory().openSession()) {
-            return session.createQuery("select c from Cars c", Cars.class).list();
+            return session.createQuery("select b from Branch b", Branch.class).list();
 
         } catch (Exception e) {
             e.printStackTrace();

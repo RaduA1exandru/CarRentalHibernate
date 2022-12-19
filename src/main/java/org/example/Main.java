@@ -1,37 +1,57 @@
 package org.example;
 
 import org.example.Model.*;
-import org.example.Repository.CarRepository;
-import org.example.Repository.CarRepositoryImpl;
-import org.example.Util.SessionManager;
+import org.example.Repository.*;
 
-import java.util.Arrays;
-import java.util.List;
+import org.example.Util.SessionManager;
 
 
 public class Main {
     public static void main(String[] args) {
 
         CarRepository carRepository = new CarRepositoryImpl();
-        System.out.println(carRepository.findById(1));
-        Car car1 = new Car(
-                "BMW",
-                "3 Series",
-                "coupe",
-                2015,
-                Colour.BLACK,
-                15000,
-                Status.AVAILABLE,
-                400,
-                new Branch(1,
-                        "Bvd. Muncii 19",
-                        "Cluj-Napoca",
-                        List<Employee>,
-                        List<Car>
-                        ));
-        carRepository.create(car1);
+        BranchRepository branchRepository = new BranchRepositoryImpl();
+        CustomerRepository customerRepository = new CustomerRepositoryImpl();
+        EmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
 
-        SessionManager.shutdown();
+        Employee employee1 = new Employee(
+                "Marcel",
+                "Pavel"
+        );
+        employeeRepository.create(employee1);
+        System.out.println(employeeRepository.findAll());
+
+//        Customer customer1 = new Customer(
+//                "Violeta",
+//                "Popescu",
+//                "violeta.popescu44@gmail.com",
+//                "Craiova 28-30, Cluj"
+//        );
+//        customerRepository.create(customer1);
+//        System.out.println(customerRepository.findAll());
+
+//        Cars car1 = new Cars(
+//                "BMW",
+//                "3Series",
+//                "coupe",
+//                2014,
+//                "BLACK",
+//                23000,
+//                140
+//        );
+//        carRepository.create(car1);
+//
+//        System.out.println(carRepository.findAll());
+//        Branch branch1 = new Branch(
+//                "plopilor45",
+//                "bucuresti"
+//        );
+//        branchRepository.create(branch1);
+//        System.out.println(branchRepository.findById(1));
+
+
+
+       SessionManager.shutdown();
     }
 
 }

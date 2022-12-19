@@ -11,23 +11,19 @@ public class Employee {
     private Integer employeeId;
     @Column(name = "first_name")
     private String firstName;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "position")
-    @Enumerated(value = EnumType.STRING)
-    private Position position;
-    @ManyToOne
-    @JoinColumn(name = "branch_id")
-    private Branch branch;
+    @Column(name = "last_name")
+    private String lastName;
+
+//    @ManyToOne
+//    @JoinColumn(name = "branch_id")
+//    private Branch branch;
 
     public Employee() {
     }
 
-    public Employee(String firstName, String name, Position position, Branch branch) {
+    public Employee(String firstName, String lastName) {
         this.firstName = firstName;
-        this.name = name;
-        this.position = position;
-        this.branch = branch;
+        this.lastName = lastName;
     }
 
     public Integer getEmployeeId() {
@@ -46,28 +42,12 @@ public class Employee {
         this.firstName = firstName;
     }
 
-    public String getName() {
-        return name;
+    public String getLastName() {
+        return lastName;
     }
 
     public void setName(String name) {
-        this.name = name;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
-    public Branch getBranch() {
-        return branch;
-    }
-
-    public void setBranch(Branch branch) {
-        this.branch = branch;
+        this.lastName = lastName;
     }
 
     @Override
@@ -75,9 +55,7 @@ public class Employee {
         return "Employee{" +
                 "employeeId=" + employeeId +
                 ", firstName='" + firstName + '\'' +
-                ", name='" + name + '\'' +
-                ", position=" + position +
-                ", branch=" + branch +
+                ", name='" + lastName + '\'' +
                 '}';
     }
 }

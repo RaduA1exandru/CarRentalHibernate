@@ -13,6 +13,11 @@ public class Branch {
     public String address;
     @Column(name = "city")
     public String city;
+//    @OneToMany(mappedBy = "branch")
+//    public List<Employee> employees;
+//    @OneToMany(mappedBy = "branch")
+//    public List<Cars> cars;
+
 
     public Branch() {
     }
@@ -54,8 +59,5 @@ public class Branch {
                 ", city='" + city + '\'' +
                 '}';
     }
-//    @OneToMany(mappedBy = "branch")
-//    public List<Employee> employees;
-//    @OneToMany(mappedBy = "branch")
-//    public List<Car> cars;
+
 }

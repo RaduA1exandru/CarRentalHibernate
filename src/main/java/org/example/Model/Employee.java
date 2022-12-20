@@ -13,6 +13,9 @@ public class Employee {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @Column
+    @Enumerated(value = EnumType.STRING)
+    private Position position;
 
 //    @ManyToOne
 //    @JoinColumn(name = "branch_id")
@@ -21,9 +24,10 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String firstName, String lastName) {
+    public Employee(String firstName, String lastName, Position position) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.position = position;
     }
 
     public Integer getEmployeeId() {
@@ -50,12 +54,25 @@ public class Employee {
         this.lastName = lastName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "employeeId=" + employeeId +
                 ", firstName='" + firstName + '\'' +
-                ", name='" + lastName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", position=" + position +
                 '}';
     }
 }

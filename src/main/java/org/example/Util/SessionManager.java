@@ -1,10 +1,7 @@
 package org.example.Util;
 
-import org.example.Model.Branch;
-import org.example.Model.Cars;
+import org.example.Model.*;
 
-import org.example.Model.Customer;
-import org.example.Model.Employee;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -29,5 +26,8 @@ public class SessionManager extends AbstractSessionManager {
         configuration.addAnnotatedClass(Branch.class);
         configuration.addAnnotatedClass(Customer.class);
         configuration.addAnnotatedClass(Employee.class);
+        configuration.addAnnotatedClass(Loan.class);
+        configuration.addAnnotatedClass(Refund.class);
+        configuration.addAnnotatedClass(Reservation.class);
     }
 }

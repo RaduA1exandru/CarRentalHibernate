@@ -27,11 +27,14 @@ public class Cars {
 //    private Status status;
     @Column(name = "amount")
     private Integer amount;
+    @Column
+    @Enumerated(value = EnumType.STRING)
+    private Status status;
 
     public Cars() {
     }
 
-    public Cars(String brand, String model, String bodyType, Integer year, String colour, Integer mileage, Integer amount) {
+    public Cars(String brand, String model, String bodyType, Integer year, String colour, Integer mileage, Integer amount, Status status) {
         this.brand = brand;
         this.model = model;
         this.bodyType = bodyType;
@@ -39,6 +42,7 @@ public class Cars {
         this.colour = colour;
         this.mileage = mileage;
         this.amount = amount;
+        this.status = status;
     }
 
     public Integer getCarId() {
@@ -101,9 +105,20 @@ public class Cars {
         return amount;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
     @Override
     public String toString() {
-        return "Car{" +
+        return "Cars{" +
                 "carId=" + carId +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
@@ -112,13 +127,10 @@ public class Cars {
                 ", colour='" + colour + '\'' +
                 ", mileage=" + mileage +
                 ", amount=" + amount +
+                ", status=" + status +
                 '}';
     }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
-//    @ManyToOne
+    //    @ManyToOne
 //    @JoinColumn(name = "branch_id")
 //    private Branch branch;
 }

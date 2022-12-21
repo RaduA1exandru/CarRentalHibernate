@@ -15,9 +15,9 @@ public class Loan {
     private Employee employee;
     @Column(name = "date_of_rental")
     private Date dateOfRental;
-//    @ManyToOne
-//    @JoinColumn(name = "reservation_id")
-//    private Reservation reservation;
+    @OneToOne
+    @JoinColumn(name = "reservation_id")
+    private Reservation reservation;
     @Column(name = "comments")
     private String comments;
 
@@ -26,11 +26,9 @@ public class Loan {
 
     public Loan(Employee employee,
                 Date dateOfRental,
-//                Reservation reservation,
                 String comments) {
         this.employee = employee;
         this.dateOfRental = dateOfRental;
-//        this.reservation = reservation;
         this.comments = comments;
     }
 
@@ -58,13 +56,13 @@ public class Loan {
         this.dateOfRental = dateOfRental;
     }
 
-//    public Reservation getReservation() {
-//        return reservation;
-//    }
-//
-//    public void setReservation(Reservation reservation) {
-//        this.reservation = reservation;
-//    }
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
 
     public String getComments() {
         return comments;
@@ -80,7 +78,6 @@ public class Loan {
                 "loanId=" + loanId +
                 ", employee=" + employee +
                 ", dateOfRental=" + dateOfRental +
-//                ", reservation=" + reservation +
                 ", comments='" + comments + '\'' +
                 '}';
     }

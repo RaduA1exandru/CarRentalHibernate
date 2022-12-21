@@ -17,9 +17,13 @@ public class Employee {
     @Enumerated(value = EnumType.STRING)
     private Position position;
 
-//    @ManyToOne
-//    @JoinColumn(name = "branch_id")
-//    private Branch branch;
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
+
+    @OneToOne
+    @JoinColumn(name = "loan_id")
+    private Loan loan;
 
     public Employee() {
     }
@@ -64,6 +68,22 @@ public class Employee {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
+
+    public Loan getLoan() {
+        return loan;
+    }
+
+    public void setLoan(Loan loan) {
+        this.loan = loan;
     }
 
     @Override

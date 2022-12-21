@@ -27,6 +27,15 @@ public class Reservation {
     @OneToOne
     @JoinColumn(name = "return_branch")
     private Branch returnBranch;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private Cars cars;
+    @OneToOne
+    @JoinColumn (name = "loan_id")
+    private Loan loan;
 
     public Reservation() {
     }
@@ -103,6 +112,30 @@ public class Reservation {
 
     public void setReturnBranch(Branch returnBranch) {
         this.returnBranch = returnBranch;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Cars getCars() {
+        return cars;
+    }
+
+    public void setCars(Cars cars) {
+        this.cars = cars;
+    }
+
+    public Loan getLoan() {
+        return loan;
+    }
+
+    public void setLoan(Loan loan) {
+        this.loan = loan;
     }
 
     @Override

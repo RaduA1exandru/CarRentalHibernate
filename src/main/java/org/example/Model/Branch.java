@@ -13,10 +13,10 @@ public class Branch {
     public String address;
     @Column(name = "city")
     public String city;
-//    @OneToMany(mappedBy = "branch")
-//    public List<Employee> employees;
-//    @OneToMany(mappedBy = "branch")
-//    public List<Cars> cars;
+    @OneToMany(mappedBy = "branch")
+    public List<Employee> employees;
+    @OneToMany(mappedBy = "branch")
+    public List<Cars> cars;
 
 
     public Branch() {
@@ -51,6 +51,23 @@ public class Branch {
         this.city = city;
     }
 
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public List<Cars> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Cars> cars) {
+        this.cars = cars;
+    }
+
     @Override
     public String toString() {
         return "Branch{" +
@@ -59,5 +76,4 @@ public class Branch {
                 ", city='" + city + '\'' +
                 '}';
     }
-
 }

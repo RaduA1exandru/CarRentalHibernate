@@ -20,9 +20,8 @@ public class Customer {
     @Column(name = "address")
     private String address;
 
-//    @OneToMany
-//    @JoinColumn(name = "reservation_id")
-//    private List<Reservation> reservations;
+    @OneToMany(mappedBy = "customer")
+    private List<Reservation> reservations;
 
     public Customer() {
     }
@@ -72,6 +71,14 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     @Override

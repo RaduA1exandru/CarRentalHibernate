@@ -2,6 +2,7 @@ package org.example.Model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Cars")
@@ -22,14 +23,18 @@ public class Cars {
     private String colour;
     @Column(name = "mileage")
     private Integer mileage;
-    //    @Column(name = "status")
-//    @Enumerated(value = EnumType.STRING)
-//    private Status status;
+
     @Column(name = "amount")
     private Integer amount;
     @Column
     @Enumerated(value = EnumType.STRING)
     private Status status;
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
+
+    @OneToMany(mappedBy = "cars")
+    private List<Reservation> reservation;
 
     public Cars() {
     }
@@ -116,6 +121,22 @@ public class Cars {
         this.amount = amount;
     }
 
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
+
+    public List<Reservation> getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(List<Reservation> reservation) {
+        this.reservation = reservation;
+    }
+
     @Override
     public String toString() {
         return "Cars{" +
@@ -128,9 +149,8 @@ public class Cars {
                 ", mileage=" + mileage +
                 ", amount=" + amount +
                 ", status=" + status +
+                ",branch_id" + branch +
                 '}';
     }
-    //    @ManyToOne
-//    @JoinColumn(name = "branch_id")
-//    private Branch branch;
+
 }
